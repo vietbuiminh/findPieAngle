@@ -30,5 +30,5 @@ run program by
 python pieangle.py
 ```
 
-![Alt text](image.png)
+![Alt text](image-1.png)
 

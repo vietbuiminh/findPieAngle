@@ -96,8 +96,14 @@ def main():
     drawCircle(point2, win)
     drawLine(point1, point2, win)
     point3 = win.getMouse()
+    mag12 = distanceBetween(point1, point2)
+    scalar = mag12 / distanceBetween(point2, point3)
+    point3 = Point(int(scalar*point3.getX() - point2.getX()*(scalar-1)),
+                   int(scalar*point3.getY() - point2.getY()*(scalar-1)))
     drawCircle(point3, win)
     drawLine(point2, point3, win)
+    outer_circle = Circle(point2, mag12)
+    outer_circle.draw(win)
     p0 = [point1.getX(), point1.getY()]
     p1 = [point2.getX(), point2.getY()]
     p2 = [point3.getX(), point3.getY()]
@@ -108,7 +114,6 @@ def main():
     angle_circle.draw(win)
     angle_text = bt.Button(win, Point(
         point2.getX()-20, point2.getY()-20), 40, 20, f"{round(abs(np.degrees(angle)), 2)}°")
-
     win.getMouse()
     win.close()
 
